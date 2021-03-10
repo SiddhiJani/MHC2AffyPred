@@ -7,7 +7,7 @@ pMHC2Pred is an initial step towards the structural based prediction of peptide 
   # Data
       1. PDB of MHC class II molecule
       2. Template of the peptide
-      3. Peptide sequences and activity
+      3. Peptide sequences with activity
 
   # Tools
       1. DatasetDivision 
@@ -39,7 +39,6 @@ pMHC2Pred is an initial step towards the structural based prediction of peptide 
     		./mark_sur [proteinfile] [outputfile]
     • Make a list text file of residue numbers which has to block to specify the binding site according to respective chains. Now run the command in the terminal:
                perl block.pl [list.txt] [modified.pdb] > [Prot_receptor.pdb]
-
     • Execute the zdock_2.sh script to run the docking so it will generate a zdock.out file which the score and a zdock.out.pdb file which is docked complex.
 
 # STEP-IV: To generate structural fingerprints
@@ -58,7 +57,7 @@ pMHC2Pred is an initial step towards the structural based prediction of peptide 
 	• The results will be displayed in the white space of “Classifier output”. We can see the binding affinity predictions for the MHC-II and peptide complexes under the 		  “predicted” and “actual” column also correlation coefficient.
 
 
-# References:
+References:
 
     1. Istyastono, E., Radifar, M., Yuniarti, N., Prasasty, V. and Mungkasi, S., 2020. PyPLIF HIPPOS: A Molecular Interaction Fingerprinting Tool for Docking Results of AutoDock Vina and PLANTS. Journal of Chemical Information and Modeling, 60(8), pp.3697-3702.
     2. Chen, R., & Weng, Z. (2003). A novel shape complementarity scoring function for protein‐protein docking. Proteins: Structure, Function, and Bioinformatics, 51(3), 397-408.
