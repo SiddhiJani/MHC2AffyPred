@@ -1,5 +1,5 @@
 # pMHC2Pred
-pMHC2Pred is an initial step towards the structural based prediction of peptide binding to MHC class II molecule.
+pMHC2Pred is an initial step towards the structure-based prediction of peptide binding to MHC class II molecule.
 
 
 # Prerequisites for pMHC2Pred:
@@ -23,7 +23,7 @@ pMHC2Pred is an initial step towards the structural based prediction of peptide 
     -------Refer the manual of the tools for the ease of the downloading and installation procedure and keep all the tools and scripts in one folder---------- 
 
 # STEP-I: Dataset division
-    • To divide the sequences between the test set and training set add sequence-based descriptors with the activity as the input excel file in DatasetDivision.
+    • To divide the sequences between the test set and training set add sequence-based descriptors with the activity as the input excel file in DatasetDivision software.
     • Set training and test set ratio 70:30 and run. It will divide the sequences between the training set and the test set.
     
 # STEP-II: Generation of peptide structures
