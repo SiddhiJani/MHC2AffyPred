@@ -51,9 +51,9 @@ pMHC2Pred is an initial step towards the structural based prediction of peptide 
 # STEP-V: Affinity prediction using Weka
     To generate the model first prepare the data as shown in the example, add the descriptors in the first then fingerprints and at the end activity of the peptide.
 	• Open the weka 3.8. Click on “explorer” load the test and training set csv file and one by one select all attributes, save as the file in .arff format.
-	• Now load the training .arff file, go to classify tab, select RandomForest and give the output file format and name select true for all the options it will generate the 	    model of the training set save the model, to get the better result run the autoweka.
-	• Load the training set model, select the “supplied test set” and set. Open the test.arff file and Class – (Num) Activity. After following all the steps right click on 	  the model to select “Reevaluate on current test set”.
-	• The results will be displayed in the white space of “Classifier output”. We can see the binding affinity predictions for the MHC-II and peptide complexes under the 		  “predicted” and “actual” column also correlation coefficient.
+	• Now load the training .arff file, go to classify tab, select RandomForest and give the output file format and name select true for all the options it will generate the model of the training set save the model, to get the better result run the autoweka.
+	• Load the training set model, select the “supplied test set” and set. Open the test.arff file and Class – (Num) Activity. After following all the steps right click on the model to select “Reevaluate on current test set”.
+	• The results will be displayed in the white space of “Classifier output”. We can see the binding affinity predictions for the MHC-II and peptide complexes under the “predicted” and “actual” column also correlation coefficient.
 
 
 References:
