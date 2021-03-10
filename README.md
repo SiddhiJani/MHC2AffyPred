@@ -21,7 +21,7 @@ pMHC2Pred is an initial step towards the structural based prediction of peptide 
       5. Weka v3.8
             Download: https://www.cs.waikato.ac.nz/ml/weka/downloading.html 
 
-# Refer the manual of the tools for the ease of the downloading and installation procedure and keep all the tools and scripts in one folder. 
+--------Refer the manual of the tools for the ease of the downloading and installation procedure and keep all the tools and scripts in one folder.---------- 
 
 # STEP-I: Dataset division
     • To divide the sequences between the test set and training set add sequence-based descriptors with the activity as the input excel file in DatasetDivision.
