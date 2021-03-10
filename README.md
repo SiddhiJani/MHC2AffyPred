@@ -23,41 +23,39 @@ pMHC2Pred is an initial step towards the structural based prediction of peptide 
 
 # Refer the manual of the tools for the ease of the downloading and installation procedure and keep all the tools and scripts in one folder. 
 
-# STEP-I: dataset division
-    • To divide the sequences in the test set and training set add sequence based descriptors with the activity as the input excel file in DatasetDivision. 
-    • Set training and test set ratio 70:30 and run. It will divide the sequences in the training set and test set.
+# STEP-I: Dataset division
+    • To divide the sequences between the test set and training set add sequence-based descriptors with the activity as the input excel file in DatasetDivision.
+    • Set training and test set ratio 70:30 and run. It will divide the sequences between the training set and the test set.
     
-# STEP-II: generation of peptide structures
-    • Make a template text file of the one latter code, chain name, residue no and amino acid code of the peptide.pdb file to generate the structure of the peptide sequence.
-    • The template and peptide sequence length has to be same.
-    • Run the perl script foldx_1.pl it will generate the structure. Give the command as follow:
-          perl foldx_1.pl [sequencelist.txt] [peptidefile]
-          
-# STEP-III: docking
+# STEP-II: Generation of peptide structures
+    Make a template text file of the one letter code, chain name, residue no and amino acid code of the peptide.pdb file to generate the structure of the peptide sequence.
+	• The template and peptide sequence length has to be the same.
+	• Run the Perl script foldx_1.pl it will generate the structure. Give the command as follow:
+      		perl foldx_1.pl [sequencelist.txt] [peptidefile]
+		
+# STEP-III: Docking
     • To prepare the receptor follow the steps:
     • Open the terminal and run the command to modify receptor:
-          ./mark_sur [proteinfile] [outputfile]
-    • Make list text file of residue numbers which has to block to specify the binding site according to respective chains. Now run the command in terminal:
-		      perl block.pl [list.txt] [modified.pdb] > [Prot_receptor.pdb]
+    		./mark_sur [proteinfile] [outputfile]
+    • Make a list text file of residue numbers which has to block to specify the binding site according to respective chains. Now run the command in the terminal:
+               perl block.pl [list.txt] [modified.pdb] > [Prot_receptor.pdb]
 
     • Execute the zdock_2.sh script to run the docking so it will generate a zdock.out file which the score and a zdock.out.pdb file which is docked complex.
 
-# STEP-IV:  to generate structural fingerprints
+# STEP-IV: To generate structural fingerprints
     • Give the residue index of the peptide interacting residues in the config file as shown in the example. 
     • Run the commands to activate PyPLIFHippos and script in terminal:
-                  conda activate base 
-                  conda activate hippos
-                  bash hippos_3.sh
+              conda activate base 
+              conda activate hippos
+              bash hippos_3.sh
     • it will create cvs file of structural fingerprints.
     
-# STEP-V: affinity prediction using Weka
-    • To generate the model first prepare the data as shown in the example, add the descriptors in the first then fingerprints and at the end activity of the peptide.
-    • Open the weka 3.8. Click on “explorer” load the test and training set csv file and one by one select all attributes, save as the file in .arff format.
-    • Now load the training .arff file, go to classify tab, select RandomForest and give the output file format and name select true for all the options it will generate the model of the training set save the model, to get the better result run the autoweka.
-    • Load the training set model, select the “supplied test set” and set. Open the test.arff file and Class – (Num) Activity. After following all the steps right click on the model to select “Reevaluate on current test set”. 
-    • The results will be displayed in the white space of “Classifier output”. We can see the binding affinity predictions for the MHC-II and peptide complexes under the “predicted” and “actual” column also correlation coefficient.
-
-
+# STEP-V: Affinity prediction using Weka
+    To generate the model first prepare the data as shown in the example, add the descriptors in the first then fingerprints and at the end activity of the peptide.
+	• Open the weka 3.8. Click on “explorer” load the test and training set csv file and one by one select all attributes, save as the file in .arff format.
+	• Now load the training .arff file, go to classify tab, select RandomForest and give the output file format and name select true for all the options it will generate the 	    model of the training set save the model, to get the better result run the autoweka.
+	• Load the training set model, select the “supplied test set” and set. Open the test.arff file and Class – (Num) Activity. After following all the steps right click on 	  the model to select “Reevaluate on current test set”.
+	• The results will be displayed in the white space of “Classifier output”. We can see the binding affinity predictions for the MHC-II and peptide complexes under the 		  “predicted” and “actual” column also correlation coefficient.
 
 
 # References:
