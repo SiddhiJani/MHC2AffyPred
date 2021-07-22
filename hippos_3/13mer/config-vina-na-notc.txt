@@ -1,0 +1,8 @@
+docking_method    vina    # plants or vina
+docking_conf      vina.conf
+
+residue_name  GLN9 PHE24 SER53 PHE54 ASN62 VAL65 ASP66 ASN69 ILE72 ASP28 TYR30 ASP57 TRP61 LYS71 ARG74 TYR78 HIS81 ASN82 GLY84 VAL85
+residue_number 5 20 49 50 58 61 62 65 68 102 104 131 135 145 148 152 155 156 158 159
+
+full_outfile vina_ifp.csv
+logfile vina_log_file.log
