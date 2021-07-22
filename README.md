@@ -45,9 +45,9 @@ Biases modeling of peptide sequence datasets were done to optimize binding with 
     •	Have hippos_3.sh, vina.conf file and docked peptide complexes in the same folder.
     •	Copy peptide length specific protein.pdbqt and corresponding config file having residue index from corresponding length name folder of hippos_3 to the folder having script and docked complexes. 
     •	Run the commands to activate PyPLIFHippos and script in terminal:
-	    conda activate base 
-	    conda activate hippos
-	    bash hippos_3.sh
+	        	 conda activate base 
+	         	 conda activate hippos
+	        	 bash hippos_3.sh
     •	The script will generating generate SIFTs in the csv file compile it in just a one csv file.
 
 # STEP-V: Affinity prediction using Weka
