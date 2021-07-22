@@ -16,7 +16,7 @@ Biases modeling of peptide sequence datasets were done to optimize binding with 
       3. ZDOCK
             Download and manual: http://zdock.umassmed.edu/software/
       4. PyPLIF-HIPPOS
-            Download: https://github.com/radifar/PyPLIF-HIPPOS 
+            Download and manual: https://github.com/radifar/PyPLIF-HIPPOS 
       5. Weka v3.8
             Download: https://www.cs.waikato.ac.nz/ml/weka/downloading.html 
     
@@ -24,36 +24,38 @@ Biases modeling of peptide sequence datasets were done to optimize binding with 
     -------Put FoldX, Zdock and PyPLIF-HIPPOS in same folder as well as install PyPLIF-HIPPOS--------
 
 # STEP-I: Descriptor calculation
-    • To get physio-chemical descriptors of peptide make a FASTA file having peptide sequences and upload on the website of Bioprot, select “Moran autocorrelation” and run, it will generate excel sheet of descriptors, download it and keep in a folder.
+    • 	To get physio-chemical descriptors of peptide make a FASTA file having peptide sequences and upload on the website of Bioprot, select “Moran autocorrelation” and submit, it will generate excel sheet of descriptors, download it and keep in a folder.
     
-# STEP-II: Generation of peptide structures
-    Make a template text file of the one letter code, chain name, residue no and amino acid code of the peptide.pdb file to generate the structure of the peptide sequence.
-	• The template and peptide sequence length has to be the same.
-	• Run the Perl script foldx_1.pl it will generate the structure. Give the command as follow:
-      		perl foldx_1.pl [sequencelist.txt] [peptidefile]
-		
-# STEP-III: Docking
-    • To prepare the receptor follow the steps:
-    • Open the terminal and run the command to modify receptor:
-    		./mark_sur [proteinfile] [outputfile]
-    • Make a list text file of residue numbers which has to block to specify the binding site according to respective chains. Now run the command in the terminal:
-               perl block.pl [list.txt] [modified.pdb] > [Prot_receptor.pdb]
-    • Execute the zdock_2.sh script to run the docking so it will generate a zdock.out file which the score and a zdock.out.pdb file which is docked complex.
+# STEP-II: Generation of peptide models
+    •	Register on website of FoldX for educational license and download tar.gz file from provided link extract the files in a folder.
+    •	The template and peptide sequence length has to be same. copy the pdb and temp.txt file from the folder of foldx_1 according to length of peptide sequences and paste to folder having sequence list text file and script foldx_1.pl.
+       	 •   For example, it the peptide sequence length is 9 then copy the pdb file and temp.txt file from 9mer of folder foldx_1 and paste it to the destination folder having FoldX downloaded file, sequence text file having 9mer peptide sequence and script. 
+    •	Have the peptide sequence text file, template file of same peptide length and perl script in the same folder.
+    •	Run the perl script foldx_1.pl it will generate the models. Give the command as follow:
+             perl foldx_1.pl [template.txt] [sequencelist.txt] [peptide pdb file]
 
-# STEP-IV: To generate structural fingerprints
-    • Give the residue index of the peptide interacting residues in the config file as shown in the example. 
-    • Run the commands to activate PyPLIFHippos and script in terminal:
-              conda activate base 
-              conda activate hippos
-              bash hippos_3.sh
-    • it will create cvs file of structural fingerprints.
-    
+# STEP-III: Docking of peptide models
+    •	For the docking have the peptide models generated using foldx, zdock downloaded files, length specific receptor pdb from folder zdock_2 in the same folder.
+    •	Execute the zdock_2.sh script to run the docking and it will generate a zdock.out file which the dock score and a zdock.out.pdb file which is the pdb of docked complex.
+             bash zdock_2.sh 
+    •	The script will check for the receptor pdb file starting with “Prot” and peptide starting with “Lig” and execute zdock command for to run docking which will generate the result as zdock.out file so script run the command to get docked complex pdb file from .out file.
+
+# STEP-IV: SIFTs generation
+    •	Install PyPLIF-HIPPOS using command given on the site.
+    •	Have hippos_3.sh, vina.conf file and docked peptide complexes in the same folder.
+    •	Copy peptide length specific protein.pdbqt and corresponding config file having residue index from corresponding length name folder of hippos_3 to the folder having script and docked complexes. 
+    •	Run the commands to activate PyPLIFHippos and script in terminal:
+	    conda activate base 
+	    conda activate hippos
+	    bash hippos_3.sh
+    •	The script will generating generate SIFTs in the csv file compile it in just a one csv file.
+
 # STEP-V: Affinity prediction using Weka
-    To generate the model first prepare the data as shown in the example, add the descriptors in the first then fingerprints and at the end activity of the peptide.
-	• Open the weka 3.8. Click on “explorer” load the test and training set csv file and one by one select all attributes, save as the file in .arff format.
-	• Now load the training .arff file, go to classify tab, select RandomForest and give the output file format and name select true for all the options it will generate the model of the training set save the model, to get the better result run the autoweka.
-	• Load the training set model, select the “supplied test set” and set. Open the test.arff file and Class – (Num) Activity. After following all the steps right click on the model to select “Reevaluate on current test set”.
-	• The results will be displayed in the white space of “Classifier output”. We can see the binding affinity predictions for the MHC-II and peptide complexes under the “predicted” and “actual” column also correlation coefficient.
+    •	Compile Moran autocorrelation descriptors and SIFTs in one single excel sheet, remove all columns having value 0 and insert at the end give name “Affinity” and save the csv file.
+    •	Download weka 3.8, Click on “explorer” and load the csv file, select all the attributes and save the file in .arff format.
+    •	Now, load the length specific model which was downloaded from the github, select the “supplied test set” and set. Open the .arff file and Class – (Num) Activity. After following all the steps right click on the model to select “Reevaluate on current test set”. 
+    •	The results will be displayed in the white space of “Classifier output”. It will show binding affinity predictions for the MHC-II and peptide complexes under the “predicted” and “actual” column also correlation coefficient.
+
 
 
 References:
