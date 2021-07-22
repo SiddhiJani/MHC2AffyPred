@@ -7,13 +7,10 @@ Biases modeling of peptide sequence datasets were done to optimize binding with 
 # Prerequisites for pMHC2Pred:
 
   # Data
-      1. PDB of MHC class II molecule
-      2. Template of the peptide
-      3. Peptide sequences with activity
-
+      Peptide sequences 
   # Tools
-      1. DatasetDivision 
-            Download: https://sourceforge.net/projects/qsardatasetdivisiongui/
+      1. Bioprot, Protein descriptor calculator 
+             Link for web server: http://biotriangle.scbdd.com/protein/index/ 
       2. FoldX  
             Download and manual: http://foldxsuite.crg.eu/documentation#manual 
       3. ZDOCK
@@ -23,11 +20,11 @@ Biases modeling of peptide sequence datasets were done to optimize binding with 
       5. Weka v3.8
             Download: https://www.cs.waikato.ac.nz/ml/weka/downloading.html 
     
-    -------Refer the manual of the tools for the ease of the downloading and installation procedure and keep all the tools and scripts in one folder---------- 
+    -------Refer the manual of the tools for the ease of the downloading and installation procedure and keep all the tools and scripts in one folder----------
+    -------Put FoldX, Zdock and PyPLIF-HIPPOS in same folder as well as install PyPLIF-HIPPOS--------
 
-# STEP-I: Dataset division
-    • To divide the sequences between the test set and training set add sequence-based descriptors with the activity as the input excel file in DatasetDivision software.
-    • Set training and test set ratio 70:30 and run. It will divide the sequences between the training set and the test set.
+# STEP-I: Descriptor calculation
+    • To get physio-chemical descriptors of peptide make a FASTA file having peptide sequences and upload on the website of Bioprot, select “Moran autocorrelation” and run, it will generate excel sheet of descriptors, download it and keep in a folder.
     
 # STEP-II: Generation of peptide structures
     Make a template text file of the one letter code, chain name, residue no and amino acid code of the peptide.pdb file to generate the structure of the peptide sequence.
