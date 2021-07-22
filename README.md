@@ -53,7 +53,7 @@ Biases modeling of peptide sequence datasets were done to optimize binding with 
 # STEP-V: Affinity prediction using Weka
     •	Compile Moran autocorrelation descriptors and SIFTs in one single excel sheet, remove all columns having value 0 and insert at the end give name “Affinity” and save the csv file.
     •	Download weka 3.8, Click on “explorer” and load the csv file, select all the attributes and save the file in .arff format.
-    •	Now, load the length specific model from the folder weka_model, select the “supplied test set” and set. Open the .arff file and Class – (Num) Activity. After following all the steps right click on the model to select “Reevaluate on current test set”. 
+    •	Now, load the length specific model from the folder weka_models, select the “supplied test set” and set. Open the .arff file and Class – (Num) Activity. After following all the steps right click on the model to select “Reevaluate on current test set”. 
     •	The results will be displayed in the white space of “Classifier output”. It will show binding affinity predictions for the MHC-II and peptide complexes under the “predicted” and “actual” column also correlation coefficient.
 
 
